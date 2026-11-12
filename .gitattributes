@@ -1,0 +1,8 @@
+# 音频按二进制处理，别让 git 做行尾转换或 diff
+*.m4a binary
+*.mp3 binary
+*.wav binary
+*.png binary
+*.jpg binary
+
+* text=auto eol=lf

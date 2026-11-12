@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>国际歌 · 76 个版本</title>
+<meta name="description" content="《国际歌》的 76 个 AI 演绎版本，在线播放、直接下载。">
+<style>
+  :root {
+    --bg: #0e0b14; --bg2: #161020; --bg3: #1e1730; --line: #2c2340;
+    --ink: #ece8f6; --ink2: #a89fc0; --muted: #6f6787;
+    --accent: #a855f7; --accent2: #7c3aed; --soft: #241a3a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(1200px 600px at 50% -200px, #2a1b45 0%, var(--bg) 60%);
+    color: var(--ink);
+    font: 15px/1.6 -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    padding-bottom: 108px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 40px 18px 0; }
+  header h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: .5px; }
+  header h1 small { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 8px; letter-spacing: 0; }
+  header p { color: var(--ink2); margin: 0 0 4px; }
+  .meta { color: var(--muted); font-size: 13px; margin-top: 10px; }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0 14px; }
+  .chip {
+    border: 1px solid var(--line); background: var(--bg2); color: var(--ink2);
+    padding: 7px 14px; border-radius: 999px; cursor: pointer; font-size: 13px;
+    font-family: inherit; transition: .15s;
+  }
+  .chip:hover { border-color: var(--accent2); color: var(--ink); }
+  .chip.on { background: var(--soft); border-color: var(--accent); color: #d8c7ff; }
+
+  .list { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--bg2); }
+  .row {
+    display: flex; align-items: center; gap: 12px; padding: 11px 14px;
+    border-bottom: 1px solid rgba(44,35,64,.6); cursor: pointer; transition: background .12s;
+  }
+  .row:last-child { border-bottom: 0; }
+  .row:hover { background: var(--bg3); }
+  .row.on { background: var(--soft); }
+  .row .no { width: 30px; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+  .row.on .no { color: var(--accent); }
+  .row .ti { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
+  .row .du { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+  .row .dl {
+    flex: 0 0 auto; color: var(--muted); text-decoration: none; font-size: 12px;
+    border: 1px solid var(--line); border-radius: 7px; padding: 3px 8px;
+  }
+  .row .dl:hover { color: var(--accent); border-color: var(--accent2); }
+
+  .bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    background: rgba(14,11,20,.92); border-top: 1px solid var(--line);
+    backdrop-filter: blur(12px); padding: 12px 16px 14px;
+  }
+  .bar .inner { max-width: 880px; margin: 0 auto; }
+  .bar .top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .bar .now { flex: 1 1 auto; min-width: 0; font-size: 13px; color: var(--ink2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .btn {
+    width: 34px; height: 34px; flex: 0 0 auto; border-radius: 50%; cursor: pointer;
+    border: 1px solid var(--line); background: var(--bg3); color: var(--ink);
+    display: grid; place-items: center; font-size: 13px; font-family: inherit;
+  }
+  .btn:hover { border-color: var(--accent2); }
+  .btn.play { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border: 0; font-size: 15px; }
+  .seek { width: 100%; appearance: none; height: 4px; border-radius: 4px; background: var(--line); outline: none; cursor: pointer; }
+  .seek::-webkit-slider-thumb {
+    appearance: none; width: 13px; height: 13px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 0 3px rgba(168,85,247,.22);
+  }
+  .seek::-moz-range-thumb { width: 13px; height: 13px; border: 0; border-radius: 50%; background: var(--accent); }
+  .times { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; margin-top: 4px; }
+  .vol { display: flex; align-items: center; gap: 6px; }
+  .vol input { width: 74px; }
+  .empty { padding: 40px; text-align: center; color: var(--muted); }
+  @media (max-width: 560px) {
+    .wrap { padding-top: 26px; }
+    header h1 { font-size: 23px; }
+    .row .dl { display: none; }
+    .vol { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>国际歌 <small>76 个版本</small></h1>
+    <p>词曲早已属于公有领域 · 这里全是 AI 生成的演绎</p>
+    <div class="meta">
+      <span id="sum">加载中…</span> ·
+      <a href="https://github.com/diyiritian-ops/internationale" target="_blank" rel="noopener">GitHub 仓库</a> ·
+      <a href="https://github.com/diyiritian-ops/internationale/archive/refs/heads/main.zip">打包下载</a> ·
+      <a href="https://github.com/diyiritian-ops/suno-uploader" target="_blank" rel="noopener">生成工具</a>
+    </div>
+  </header>
+
+  <div class="chips" id="chips"></div>
+  <div class="list" id="list"><div class="empty">正在读取歌单…</div></div>
+</div>
+
+<div class="bar">
+  <div class="inner">
+    <div class="top">
+      <button class="btn" id="prev" title="上一首（↑）">⏮</button>
+      <button class="btn play" id="toggle" title="播放 / 暂停（空格）">▶</button>
+      <button class="btn" id="next" title="下一首（↓）">⏭</button>
+      <div class="now" id="now">未选择曲目</div>
+      <div class="vol"><span style="color:var(--muted)">🔊</span><input class="seek" id="vol" type="range" min="0" max="1" step="0.01" value="0.85"></div>
+    </div>
+    <input class="seek" id="seek" type="range" min="0" max="1000" value="0">
+    <div class="times"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+  </div>
+</div>
+
+<audio id="au" preload="metadata"></audio>
+
+<script>
+const fmt = s => isFinite(s) ? Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0') : '0:00';
+
+let tracks = [], view = [], current = -1, filtering = null;
+
+const au = document.getElementById('au');
+const listEl = document.getElementById('list');
+const chipsEl = document.getElementById('chips');
+const nowEl = document.getElementById('now');
+const toggleEl = document.getElementById('toggle');
+const seekEl = document.getElementById('seek');
+const curEl = document.getElementById('cur');
+const durEl = document.getElementById('dur');
+const volEl = document.getElementById('vol');
+
+function renderChips() {
+  const groups = [...new Set(tracks.map(t => t.group))];
+  const total = tracks.length;
+  const items = [{ key: null, label: '全部 ' + total }].concat(
+    groups.map(g => ({ key: g, label: (tracks.find(t => t.group === g).groupTitle || g) + ' ' + tracks.filter(t => t.group === g).length }))
+  );
+  chipsEl.innerHTML = '';
+  for (const it of items) {
+    const b = document.createElement('button');
+    b.className = 'chip' + (filtering === it.key ? ' on' : '');
+    b.textContent = it.label;
+    b.onclick = () => { filtering = it.key; renderChips(); renderList(); };
+    chipsEl.appendChild(b);
+  }
+}
+
+function renderList() {
+  view = filtering ? tracks.filter(t => t.group === filtering) : tracks.slice();
+  listEl.innerHTML = '';
+  if (!view.length) { listEl.innerHTML = '<div class="empty">这一组是空的</div>'; return; }
+  view.forEach((t, i) => {
+    const row = document.createElement('div');
+    row.className = 'row' + (t === tracks[current] ? ' on' : '');
+    row.innerHTML = '<span class="no"></span><span class="ti"></span><span class="du"></span>';
+    row.querySelector('.no').textContent = String(t.index).padStart(2, '0');
+    row.querySelector('.ti').textContent = t.title;
+    row.querySelector('.du').textContent = t.mmss;
+    const a = document.createElement('a');
+    a.className = 'dl'; a.href = t.file; a.download = ''; a.textContent = '下载';
+    a.onclick = e => e.stopPropagation();
+    row.appendChild(a);
+    row.onclick = () => { playIndex(tracks.indexOf(t)); };
+    listEl.appendChild(row);
+  });
+}
+
+function playIndex(i) {
+  if (i < 0 || i >= tracks.length) return;
+  current = i;
+  const t = tracks[i];
+  au.src = t.file;
+  au.play().catch(() => {});
+  nowEl.textContent = t.title;
+  renderList();
+  try { localStorage.setItem('gjg:last', String(i)); } catch (e) {}
+}
+
+au.addEventListener('loadedmetadata', () => { durEl.textContent = fmt(au.duration); });
+au.addEventListener('timeupdate', () => {
+  curEl.textContent = fmt(au.currentTime);
+  if (au.duration) seekEl.value = String(Math.round(au.currentTime / au.duration * 1000));
+});
+au.addEventListener('play', () => { toggleEl.textContent = '❚❚'; });
+au.addEventListener('pause', () => { toggleEl.textContent = '▶'; });
+au.addEventListener('ended', () => { next(); });
+
+toggleEl.onclick = () => {
+  if (current < 0) return playIndex(0);
+  au.paused ? au.play() : au.pause();
+};
+document.getElementById('next').onclick = next;
+document.getElementById('prev').onclick = prev;
+function next() { playIndex(current < 0 ? 0 : (current + 1) % tracks.length); }
+function prev() { playIndex(current <= 0 ? tracks.length - 1 : current - 1); }
+
+seekEl.oninput = () => { if (au.duration) au.currentTime = Number(seekEl.value) / 1000 * au.duration; };
+volEl.oninput = () => { au.volume = Number(volEl.value); };
+au.volume = 0.85;
+
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.code === 'Space') { e.preventDefault(); toggleEl.click(); }
+  else if (e.code === 'ArrowRight') au.currentTime = Math.min(au.duration || 0, au.currentTime + 5);
+  else if (e.code === 'ArrowLeft') au.currentTime = Math.max(0, au.currentTime - 5);
+  else if (e.code === 'ArrowDown') { e.preventDefault(); next(); }
+  else if (e.code === 'ArrowUp') { e.preventDefault(); prev(); }
+});
+
+fetch('songs.json')
+  .then(r => r.json())
+  .then(data => {
+    tracks = data;
+    const secs = tracks.reduce((s, t) => s + (t.seconds || 0), 0);
+    const mb = tracks.reduce((s, t) => s + (t.bytes || 0), 0) / 1048576;
+    document.getElementById('sum').textContent =
+      tracks.length + ' 首 · ' + Math.floor(secs / 3600) + ' 小时 ' + Math.round(secs % 3600 / 60) + ' 分 · ' + Math.round(mb) + ' MB';
+    renderChips(); renderList();
+    let last = -1;
+    try { last = Number(localStorage.getItem('gjg:last')); } catch (e) {}
+    if (last >= 0 && last < tracks.length) {
+      au.src = tracks[last].file;
+      nowEl.textContent = tracks[last].title + '（点播放继续）';
+      current = last;
+      renderList();
+    }
+  })
+  .catch(() => {
+    listEl.innerHTML = '<div class="empty">读不到 songs.json —— 用 file:// 直接打开会被浏览器拦，起个静态服务，或者直接看 GitHub 仓库。</div>';
+  });
+</script>
+</body>
+</html>
